@@ -36,6 +36,7 @@ Code_For_Ast & Number_Ast<T>::compile()
 {
 
 }
+template <class T>
 Code_For_Ast & Number_Ast<T>::compile_and_optimize_ast(Lra_Outcome & lra)
 {
 

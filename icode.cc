@@ -38,16 +38,16 @@ template <class T>
 void Const_Opd<T>::print_asm_opd(ostream & file_buffer){}
 
 template <class T>
-Const_Opd & Const_Opd<T>::operator=(const Const_Opd & rhs){}
+Const_Opd<T> & Const_Opd<T>::operator=(const Const_Opd<T> & rhs){}
 
-Instruction_Descriptor & Instruction_Descriptor::get_op(){}
-Ics_Opd * Instruction_Descriptor::get_opd1(){}
-Ics_Opd * Instruction_Descriptor::get_opd2(){}
-Ics_Opd * Instruction_Descriptor::get_result(){}
+Instruction_Descriptor & Icode_Stmt::get_op(){}
+Ics_Opd * Icode_Stmt::get_opd1(){}
+Ics_Opd * Icode_Stmt::get_opd2(){}
+Ics_Opd * Icode_Stmt::get_result(){}
 
-void Instruction_Descriptor::set_opd1(Ics_Opd * io){}
-void Instruction_Descriptor::set_opd2(Ics_Opd * io){}
-void Instruction_Descriptor::set_result(Ics_Opd * io){}
+void Icode_Stmt::set_opd1(Ics_Opd * io){}
+void Icode_Stmt::set_opd2(Ics_Opd * io){}
+void Icode_Stmt::set_result(Ics_Opd * io){}
 
 
 Move_IC_Stmt::Move_IC_Stmt(Tgt_Op inst_op, Ics_Opd * opd1, Ics_Opd * result){} 
