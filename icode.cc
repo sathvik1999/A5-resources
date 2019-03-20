@@ -38,13 +38,13 @@ template <class T>
 Const_Opd & Const_Opd<T>::operator=(const Const_Opd & rhs){}
 
 Instruction_Descriptor & Instruction_Descriptor::get_op(){}
-virtual Ics_Opd * Instruction_Descriptor::get_opd1(){}
-virtual Ics_Opd * Instruction_Descriptor::get_opd2(){}
-virtual Ics_Opd * Instruction_Descriptor::get_result(){}
+Ics_Opd * Instruction_Descriptor::get_opd1(){}
+Ics_Opd * Instruction_Descriptor::get_opd2(){}
+Ics_Opd * Instruction_Descriptor::get_result(){}
 
-virtual void Instruction_Descriptor::set_opd1(Ics_Opd * io){}
-virtual void Instruction_Descriptor::set_opd2(Ics_Opd * io){}
-virtual void Instruction_Descriptor::set_result(Ics_Opd * io){}
+void Instruction_Descriptor::set_opd1(Ics_Opd * io){}
+void Instruction_Descriptor::set_opd2(Ics_Opd * io){}
+void Instruction_Descriptor::set_result(Ics_Opd * io){}
 
 
 Move_IC_Stmt::Move_IC_Stmt(Tgt_Op inst_op, Ics_Opd * opd1, Ics_Opd * result){} 
