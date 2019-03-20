@@ -1,4 +1,7 @@
 #include "icode.hh"
+template class Const_Opd<double>;
+template class Const_Opd<int>;
+
 
 Instruction_Descriptor::Instruction_Descriptor (Tgt_Op op, string name, string mnn, string ics, Icode_Format icf, Assembly_Format af){}
 Instruction_Descriptor::Instruction_Descriptor(){}
