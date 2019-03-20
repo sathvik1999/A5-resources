@@ -34,6 +34,14 @@ Code_For_Ast & Name_Ast::create_store_stmt(Register_Descriptor * store_register)
 template <class T>
 Code_For_Ast & Number_Ast<T>::compile()
 {
+	Register_Descriptor * r = machine_desc_object.get_new_register<gp_data>();
+	list<Icode_Stmt *> *l = new list<Icode_Stmt *>();
+	Register_Addr_Opd * result = new Register_Addr_Opd(r);
+	Const_Opd<node_data_type> * opd1 = new Const_Opd<node_data_type>(constant);
+	Move_IC_Stmt * m = new Move_IC_Stmt(imm_load , opd1, result);
+	Code_For_Ast * c = new Code_For_Ast(*l,r);
+	c->append_ics(*m);
+	return *c;
 
 }
 template <class T>
