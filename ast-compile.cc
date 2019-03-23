@@ -10,7 +10,8 @@ Code_For_Ast & Ast::create_store_stmt(Register_Descriptor * store_register)
 
 Code_For_Ast & Assignment_Ast::compile()
 {
-
+	Register_Descriptor * r = machine_desc_object.get_new_register<gp_data>();
+	list<Icode_Stmt *> *l = new list<Icode_Stmt *>();
 }
 Code_For_Ast & Assignment_Ast::compile_and_optimize_ast(Lra_Outcome & lra)
 {
@@ -19,7 +20,7 @@ Code_For_Ast & Assignment_Ast::compile_and_optimize_ast(Lra_Outcome & lra)
 
 Code_For_Ast & Name_Ast::compile()
 {
-
+	
 }
 Code_For_Ast & Name_Ast::compile_and_optimize_ast(Lra_Outcome & lra)
 {
@@ -34,14 +35,29 @@ Code_For_Ast & Name_Ast::create_store_stmt(Register_Descriptor * store_register)
 template <class T>
 Code_For_Ast & Number_Ast<T>::compile()
 {
-	Register_Descriptor * r = machine_desc_object.get_new_register<gp_data>();
-	list<Icode_Stmt *> *l = new list<Icode_Stmt *>();
-	Register_Addr_Opd * result = new Register_Addr_Opd(r);
-	Const_Opd<node_data_type> * opd1 = new Const_Opd<node_data_type>(constant);
-	Move_IC_Stmt * m = new Move_IC_Stmt(imm_load , opd1, result);
-	Code_For_Ast * c = new Code_For_Ast(*l,r);
-	c->append_ics(*m);
-	return *c;
+	// Register_Descriptor * r = machine_desc_object.get_new_register<gp_data>();
+	if(node_data_type == double_data_type)
+	{
+		Register_Descriptor * r = machine_desc_object.get_new_register<float_reg>();
+		Const_Opd<double> * opd1 = new Const_Opd<double>(constant);
+		list<Icode_Stmt *> *l = new list<Icode_Stmt *>();
+		Register_Addr_Opd * result = new Register_Addr_Opd(r);
+		Move_IC_Stmt * m = new Move_IC_Stmt(imm_load , opd1, result);
+		Code_For_Ast * c = new Code_For_Ast(*l,r);
+		c->append_ics(*m);
+		return *c;
+	}
+	else
+	{
+		Register_Descriptor * r = machine_desc_object.get_new_register<gp_data>();
+		Const_Opd<int> * opd1 = new Const_Opd<int>(constant);
+		list<Icode_Stmt *> *l = new list<Icode_Stmt *>();
+		Register_Addr_Opd * result = new Register_Addr_Opd(r);
+		Move_IC_Stmt * m = new Move_IC_Stmt(imm_load , opd1, result);
+		Code_For_Ast * c = new Code_For_Ast(*l,r);
+		c->append_ics(*m);
+		return *c;
+	}
 
 }
 template <class T>
