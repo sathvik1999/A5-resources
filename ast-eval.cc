@@ -1,7 +1,7 @@
 #include "ast.hh"
 template class Number_Ast<double>;
 template class Number_Ast<int>;
-int Ast::labelCounter = 6;
+int Ast::labelCounter = 0;
 
 void Symbol_Table::create(Local_Environment & local_global_variables_table)
 {

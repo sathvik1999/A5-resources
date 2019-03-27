@@ -64,6 +64,21 @@ public:
 	virtual Code_For_Ast & create_store_stmt(Register_Descriptor * store_register);
 };
 
+class Print_Ast:public Ast
+{
+     Ast *var;
+public:
+    Print_Ast(Ast *v, int line);
+    ~Print_Ast();
+
+    void print(ostream & file_buffer);
+
+    Eval_Result & evaluate(Local_Environment & eval_env, ostream & file_buffer){}
+
+    Code_For_Ast & compile(){}
+    Code_For_Ast & compile_and_optimize_ast(Lra_Outcome & lra){}
+};
+
 class Assignment_Ast:public Ast
 {
 	Ast * lhs;

@@ -10,6 +10,19 @@ Symbol_Table_Entry & Ast::get_symbol_entry(){}
 Data_Type Ast::get_data_type(){}
 void Ast::set_data_type(Data_Type dt){}
 bool Ast::is_value_zero(){}
+
+
+Print_Ast::Print_Ast(Ast *v, int line){
+	var = v;
+	lineno = line;
+}
+
+Print_Ast::~Print_Ast(){}
+
+void Print_Ast::print(ostream & file_buffer){
+	var->print(file_buffer);
+}
+
 Assignment_Ast::Assignment_Ast(Ast * temp_lhs, Ast * temp_rhs, int line)
 {
 	lhs = temp_lhs;
